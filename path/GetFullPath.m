@@ -1,6 +1,6 @@
-function File = GetFullPath(File)
-% GetFullPath - Get absolute path of a file or folder [MEX]
-% FullName = GetFullPath(Name)
+function File = getFullPath(File)
+% getFullPath - Get absolute path of a file or folder [MEX]
+% FullName = getFullPath(Name)
 % INPUT:
 %   Name: String or cell string, file or folder name with or without relative
 %         or absolute path.
@@ -21,20 +21,20 @@ function File = GetFullPath(File)
 %
 % EXAMPLES:
 %   cd(tempdir);                    % Here assumed as C:\Temp
-%   GetFullPath('File.Ext')         % ==>  'C:\Temp\File.Ext'
-%   GetFullPath('..\File.Ext')      % ==>  'C:\File.Ext'
-%   GetFullPath('..\..\File.Ext')   % ==>  'C:\File.Ext'
-%   GetFullPath('.\File.Ext')       % ==>  'C:\Temp\File.Ext'
-%   GetFullPath('*.txt')            % ==>  'C:\Temp\*.txt'
-%   GetFullPath('..')               % ==>  'C:\'
-%   GetFullPath('Folder\')          % ==>  'C:\Temp\Folder\'
-%   GetFullPath('D:\A\..\B')        % ==>  'D:\B'
-%   GetFullPath('\\Server\Folder\Sub\..\File.ext')
+%   getFullPath('File.Ext')         % ==>  'C:\Temp\File.Ext'
+%   getFullPath('..\File.Ext')      % ==>  'C:\File.Ext'
+%   getFullPath('..\..\File.Ext')   % ==>  'C:\File.Ext'
+%   getFullPath('.\File.Ext')       % ==>  'C:\Temp\File.Ext'
+%   getFullPath('*.txt')            % ==>  'C:\Temp\*.txt'
+%   getFullPath('..')               % ==>  'C:\'
+%   getFullPath('Folder\')          % ==>  'C:\Temp\Folder\'
+%   getFullPath('D:\A\..\B')        % ==>  'D:\B'
+%   getFullPath('\\Server\Folder\Sub\..\File.ext')
 %                                   % ==>  '\\Server\Folder\File.ext'
-%   GetFullPath({'..', 'new'})      % ==>  {'C:\', 'C:\Temp\new'}
+%   getFullPath({'..', 'new'})      % ==>  {'C:\', 'C:\Temp\new'}
 %
-% COMPILE: See GetFullPath.c
-%   Run the unit-test uTest_GetFullPath after compiling.
+% COMPILE: See getFullPath.c
+%   Run the unit-test uTest_getFullPath after compiling.
 %
 % Tested: Matlab 6.5, 7.7, 7.8, 7.13, WinXP/32, Win7/64
 % Compiler: LCC 2.4/3.8, OpenWatcom 1.8, BCC 5.5, MSVC 2008
@@ -44,8 +44,8 @@ function File = GetFullPath(File)
 
 % $JRev: R-x V:023 Sum:BNPK16hXCfpM Date:22-Oct-2011 00:51:51 $
 % $License: BSD (use/copy/change/redistribute on own risk, mention the author) $
-% $UnitTest: uTest_GetFullPath $
-% $File: Tools\GLFile\GetFullPath.m $
+% $UnitTest: uTest_getFullPath $
+% $File: Tools\GLFile\getFullPath.m $
 % History:
 % 001: 20-Apr-2010 22:28, Successor of Rel2AbsPath.
 % 010: 27-Jul-2008 21:59, Consider leading separator in M-version also.
@@ -68,31 +68,31 @@ function File = GetFullPath(File)
 % - Mex-version cares about the limit MAX_PATH.
 % - Mex does not work under MacOS/Unix.
 % - M is remarkably slower.
-% - Mex calls Windows system function GetFullPath and is therefore much more
+% - Mex calls Windows system function getFullPath and is therefore much more
 %   stable.
 % - Mex is much faster.
 
 % Disable this warning for the current Matlab session:
-%   warning off JSimon:GetFullPath:NoMex
+%   warning off JSimon:getFullPath:NoMex
 % If you use this function e.g. under MacOS and Linux, remove this warning
 % completely, because it slows down the function by 40%!
-%warning('JSimon:GetFullPath:NoMex', ...
-%  'GetFullPath: Using slow M instead of fast Mex.');
+%warning('JSimon:getFullPath:NoMex', ...
+%  'getFullPath: Using slow M instead of fast Mex.');
 
 % To warn once per session enable this and remove the warning above:
 %persistent warned
 %if isempty(warned)
-%   warning('JSimon:GetFullPath:NoMex', ...
-%           'GetFullPath: Using slow M instead of fast Mex.');
+%   warning('JSimon:getFullPath:NoMex', ...
+%           'getFullPath: Using slow M instead of fast Mex.');
 %    warned = true;
 % end
 
 % Handle cell strings:
-% NOTE: It is faster to create a function @cell\GetFullPath.m under Linux,
+% NOTE: It is faster to create a function @cell\getFullPath.m under Linux,
 % but under Windows this would shadow the fast C-Mex.
 if isa(File, 'cell')
    for iC = 1:numel(File)
-      File{iC} = GetFullPath(File{iC});
+      File{iC} = getFullPath(File{iC});
    end
    return;
 end
