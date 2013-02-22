@@ -2,9 +2,9 @@
 function h = imgsc(img, scale)
 
     if nargin < 2
-        imagesc(img);
+        h = imagesc(img);
     else
-        imagesc(img, scale);
+        h = imagesc(img, scale);
     end
 
     axis image;
