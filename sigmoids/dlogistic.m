@@ -5,5 +5,5 @@
 
 function f = dlogistic(x, varargin)
 
-s = logistic(x, varargin);
+s = logistic(x, varargin{:});
 f = s.*(1-s);
