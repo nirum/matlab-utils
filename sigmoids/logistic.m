@@ -1,9 +1,9 @@
-% Sigmoid nonlinearity function
+% Sigmoid function
 % Niru Maheswaranathan
 % Thu Jul 26 12:27:22 2012
-% f = sigmoid(x, varargin)
+% f = logistic(x, {'gain', 1, 'threshold', 0, 'maximum', 1})
 
-function f = sigmoid(x, varargin)
+function f = logistic(x, varargin)
 
 p = inputParser;
 addRequired(p,'x',@isnumeric);
