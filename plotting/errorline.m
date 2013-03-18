@@ -1,16 +1,15 @@
-function [hPts hLine] = errorline(x,y,e, varargin)
-% like errorbar, except plots vertical lines that look nice 
+function [hPts hLine] = errorline(x,y,e)
+% like errorbar, except plots vertical lines that look nice
 
     marker = '.';
-    lineWidth = 1;
+    lineWidth = 2;
     color = 'k';
     axh = [];
-    assignargs(varargin);
 
-    x = makecol(x);
-    y = makecol(y);
-    e = makecol(e);
-   
+    x = col(x);
+    y = col(y);
+    e = col(e);
+
     if isempty(axh)
         axh = gca;
     end
