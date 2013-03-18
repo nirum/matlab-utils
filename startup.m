@@ -16,6 +16,7 @@ format short g
 
 % Add additional directories to the path
 setenv('PATH', [getenv('PATH') ':/usr/local/bin:/usr/texbin']);
+setPathMatlabUtils;
 
 % change directory
 cd '~/research/'; ccl;

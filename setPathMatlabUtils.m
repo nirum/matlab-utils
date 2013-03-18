@@ -1,4 +1,4 @@
-function setPathMatlabUtils()
+function setPathMatlabUtils
 
     % get folder that I am located in
     codeRoot = fileparts(mfilename('fullpath'));
@@ -8,7 +8,7 @@ function setPathMatlabUtils()
     % addPathRecursive depends on string functions
     addpath(fullfile(codeRoot, 'string'));
 
-    thisPath = fileparts(mfilename('fullpath'));
+    %thisPath = fileparts(mfilename('fullpath'));
     % add this manually as addPathRecursive is located there
     addpath(fullfile(codeRoot, 'path'));
     addPathRecursive(codeRoot);
