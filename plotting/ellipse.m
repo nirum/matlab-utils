@@ -1,4 +1,4 @@
-function h=ellipse(ra,rb,ang,x0,y0,C,Nb)
+function h = ellipse(ra,rb,ang,x0,y0,C,Nb)
 % Ellipse adds ellipses to the current plot
 %
 % ELLIPSE(ra,rb,ang,x0,y0) adds an ellipse with semimajor axis of ra,
@@ -31,15 +31,12 @@ function h=ellipse(ra,rb,ang,x0,y0,C,Nb)
 %
 % note that if ra=rb, ELLIPSE plots a circle
 %
-
 % written by D.G. Long, Brigham Young University, based on the
 % CIRCLES.m original
 % written by Peter Blattner, Institute of Microtechnology, University of
 % Neuchatel, Switzerland, blattner@imt.unine.ch
 
-
 % Check the number of input arguments
-
 if nargin<1,
   ra=[];
 end;
@@ -49,23 +46,19 @@ end;
 if nargin<3,
   ang=[];
 end;
-
 %if nargin==1,
 %  error('Not enough arguments');
 %end;
-
 if nargin<5,
   x0=[];
   y0=[];
 end;
-
 if nargin<6,
   C=[];
   color = [0.1 0.1 0.4];
 else
   color = C;
 end
-
 if nargin<7,
   Nb=[];
 end
@@ -76,7 +69,6 @@ lightcolor = color + [0.6,0.6,0.6];
 lightcolor(find(lightcolor>1.0)) = 1.0;
 
 % set up the default values
-
 if isempty(ra),ra=1;end;
 if isempty(rb),rb=1;end;
 if isempty(ang),ang=0;end;
@@ -86,7 +78,6 @@ if isempty(Nb),Nb=300;end;
 if isempty(C),C=get(gca,'colororder');end;
 
 % work on the variable sizes
-
 x0=x0(:);
 y0=y0(:);
 ra=ra(:);
@@ -157,7 +148,4 @@ for k=1:maxk
   hold on;
   patch(X(:,1), X(:,2), lightcolor, 'lineWidth', 2, 'EdgeColor', color);
   plot(x0, y0, 'x', 'lineWidth', 2, 'color', color);
-
-
 end;
-
