@@ -1,4 +1,4 @@
-% Sigmoid function
+% logistic function
 % Niru Maheswaranathan
 % Thu Jul 26 12:27:22 2012
 % f = logistic(x, {'gain', 1, 'threshold', 0, 'maximum', 1})
