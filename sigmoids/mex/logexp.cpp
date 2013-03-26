@@ -48,7 +48,7 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
     {
         for(j = 0; j < m; j++)
         {
-            y[i+j*m] = gain*log(1+exp(slope*(x[i+j*m] - threshold)));
+            y[j+i*m] = gain*log(1+exp(slope*(x[j+i*m] - threshold)));
         }
     }
 }
