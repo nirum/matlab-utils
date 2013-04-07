@@ -5,4 +5,4 @@
 function removeshortcut(str)
 fprintf(['Removed ' str ' from shortcuts.\n']);
 eval(['clearvars -except ' str '; load shortcuts; clear ' str ';']);
-save('~/code/functions/shortcuts.mat');
+save('~/code/toolbox/matlab-utils/shortcuts.mat');

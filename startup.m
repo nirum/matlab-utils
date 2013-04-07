@@ -9,7 +9,7 @@ setpref('Internet','SMTP_Server','mail');
 beep off;
 
 % load shortcuts
-%load shortcuts;
+load shortcuts;
 
 % number format
 format short g

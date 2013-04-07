@@ -6,4 +6,4 @@
 function addshortcut(str)
 eval([str ' = pwd;']);
 fprintf(['Saved ' pwd ' as shortcut ' str '.\n']);
-eval(['save(''~/code/functions/shortcuts.mat'', ''' str ''', ''-append'');']);
+eval(['save(''~/code/toolbox/matlab-utils.mat'', ''' str ''', ''-append'');']);
