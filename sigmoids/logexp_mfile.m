@@ -1,7 +1,7 @@
 % log(1+exp) function
 % Niru Maheswaranathan
 % Wed Mar 20 16:36:37 2013
-% f = logistic(x, {'gain', 1, 'threshold', 0, 'slope', 1})
+% f = logistic(x, {'gain', 1, 'slope', 1, 'threshold', 0})
 
 function f = logexp(x, varargin)
 
