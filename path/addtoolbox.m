@@ -5,4 +5,4 @@
 
 function addtoolbox(toolbox)
 
-    addpath(['/Users/nirum/code/toolbox/' toolbox '/']);
+    addpath(['~/code/toolbox/' toolbox '/']);
