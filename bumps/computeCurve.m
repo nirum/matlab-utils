@@ -1,25 +1,28 @@
-% Gaussian Bumps toolbox
-% compute full nonlinearity from coefficients
+% compute nonlinearity output from coefficients and basis vectors
 % Niru Maheswaranathan
 % Wed May 22 13:07:57 2013
+% [x y] = computeCurve(xk, yk, sigma, limits, numpts)
 
-function [x y] = computeCurve(xk, yk, sigma, limits, numpts)
+function r = computeCurve(u, x, f, Phi)
 
-    if nargin < 5
-        numpts = 1e3;
-    end
-    if nargin < 4
-        limits = [xk(1) xk(end)];
-    end
-    if nargin < 3
-        sigma = 1;
-    end
+    r = zeros(size(u));
 
-    x = linspace(limits(1), limits(2), numpts);
-    y = zeros(size(x));
-    dx = mean(diff(xk));
+    % nonlinearity
+    n = f'*Phi;
+    dx = mean(diff(x));
 
-    for k = 1:length(xk)
-        pdf = normpdf(x, xk(k), sigma); pdf = pdf./(sum(pdf)*mean(diff(x)));
-        y = y + yk(k)*dx*pdf;
+    for j = 1:length(r)
+        progressbar(j,length(r));
+        stopIdx = find(u(j) < x, 1);
+        if isempty(stopIdx)
+            stopIdx = length(x);
+        end
+
+        if (stopIdx > 1)
+            startIdx = stopIdx - 1;
+        else
+            startIdx = stopIdx;
+        end;
+
+        r(j) = (u(j)-x(startIdx))*(n(stopIdx)-n(startIdx))/dx + n(startIdx);
     end
