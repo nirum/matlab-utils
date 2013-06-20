@@ -1,6 +1,7 @@
 % Generate poisson spiking across many trials
 % Niru Maheswaranathan
 % Fri May 24 14:55:53 2013
+% spikes = poisstrials(rate, numTrials)
 
 function spikes = poisstrials(rate, numTrials)
 
