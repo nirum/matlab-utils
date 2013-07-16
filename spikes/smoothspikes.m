@@ -1,6 +1,7 @@
 % Smooth a spike train with a Gaussian kernel
 % Niru Maheswaranathan
 % 11:10 PM Jul 15, 2013
+% sm = smoothspikes(t, s, sigma)
 
 function sm = smoothspikes(t, s, sigma)
 
