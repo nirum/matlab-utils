@@ -1,5 +1,0 @@
-classdef PrettyAxisGroup < handle
-
-    
-
-end
