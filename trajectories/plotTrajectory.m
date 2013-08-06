@@ -13,7 +13,7 @@ function h = plotTrajectory(t, x, N, offset)
         N = 3;
     end
 
-    colors = varycolor(N);
+    colors = cbrewer('qual','Set2',8);
     legendstr = {};
 
     fig; hold on;
