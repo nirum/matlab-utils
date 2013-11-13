@@ -1,5 +1,5 @@
 
-% Panel can build complex layouts rapidly (reprise of demo 1).
+% Panel can build complex layouts rapidly (HINTS on MARGINS!).
 %
 % (a) Build the layout from demopanel1, with annotation
 % (b) Add the content, so we can see what we're aiming for
@@ -11,17 +11,14 @@
 %% (a)
 
 % create panel
-%
-% we're going to build a big ol' layout, so we'll defer
-% rendering until we're finished
-p = panel('defer');
+p = panel();
 
 % let's start with two columns, one third and two thirds
-p.pack('h', [1/3 2/3])
+p.pack('h', {1/3 2/3})
 
 % then let's pack two rows into the first column, with the
 % top row pretty big so we've room for some sub-panels
-p(1).pack([2/3 -1]);
+p(1).pack({2/3 []});
 
 % now let's pack in those sub-panels
 p(1,1).pack(3, 2);
@@ -33,6 +30,8 @@ p(2).pack(6, 2);
 
 
 %% (b)
+
+% now, let's populate those panels with axes full of data...
 
 % data set 1
 for m = 1:3
@@ -131,27 +130,18 @@ p(2).ylabel('normalised frequency (%)');
 
 %% (d)
 
-% because we 'defer'red, we have to refresh.
-p.refresh();
-
-
-
-%%%% ATTEMPT 1 : DEFAULT MARGINS
-
-% see how the default margins are kind of crap for this
-% rather complex layout. we'll sort that out next.
-disp('Default margins are inappropriate.');
-
-% pause
-disp('Press any key to tighten all internal margins...');
+% wow, those default margins suck for this figure. let's see
+% if we can do better...
+disp('These are the default margins - press any key to continue...');
 pause
 
 
 
-%%%% ATTEMPT 2 : TIGHTEN MARGINS BETWEEN AXES
+%%%% STEP 1 : TIGHT INTERNAL MARGINS
 
-% tighten up all margins so that they're appropriate for the
-% sub-grids.
+% tighten up all internal margins to the smallest margin
+% we'll use anywhere (between the un-labelled sub-grids).
+% this is usually a good starting point for any layout.
 p.de.margin = 2;
 
 % notice that we set the margin of all descendants of p, but
@@ -160,32 +150,46 @@ p.de.margin = 2;
 % p, to the figure edge. we can display this value:
 disp(sprintf('p.margin is [ %i %i %i %i ]', p.margin));
 
+% the set p.fa (family) _does_ include p, so p.fa is equal
+% to p.de plus p. if you see what I mean. check help
+% panel/family and help panel/descendants! you could also
+% have used the line, p.fa.margin = 2, it would have worked
+% just fine.
+
 % pause
-disp('Press any key to widen two internal margins...');
+disp('We''ve tightened internal margins - press any key to continue...');
 pause
 
 
 
-%%%% ATTEMPT 3 : ADD SOME BIGGER MARGINS WHERE APPROPRIATE
+%%%% STEP 2 : INCREASE INTERNAL MARGINS AS REQUIRED
 
-% now, let's space out the places we want spaced out
+% now, let's space out the places we want spaced out -
+% remember that you can use p.identify() to get a nice
+% indication of how to reference individual panels.
 p(1,1).marginbottom = 12;
 p(2).marginleft = 20;
 
 % pause
-disp('Press any key to tighten external (figure edge) margins...');
+disp('We''ve increased two internal margins - press any key to continue...');
 pause
 
 
 
-%%%% ATTEMPT 4 : TIGHTEN THE MARGINS WITH THE FIGURE EDGE
+%%%% STEP 3 : FINALISE MARGINS WITH FIGURE EDGES
 
 % finally, let's sail as close to the wind as we dare for
-% the final product, by trimming the root margin to the bone
+% the final product, by trimming the root margin to the
+% bone. eliminating any wasted whitespace like this is
+% particularly helpful in exported image files.
 p.margin = [13 10 2 2];
 
-% and let's set the global font properties
+% and let's set the global font properties, also. we can do
+% this at any point, it doesn't have to be here.
 p.fontsize = 8;
+
+% report
+disp('We''ve now adjusted the figure edge margins (and reduced the fontsize), so we''re done.');
 
 
 

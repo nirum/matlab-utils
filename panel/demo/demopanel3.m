@@ -13,8 +13,8 @@
 % create a panel in gcf.
 %
 % "p" is called the "root panel", which is the special panel
-% whose parent is the figure window, rather than another
-% panel.
+% whose parent is the figure window (usually), rather than
+% another panel.
 p = panel();
 
 % pack a 2x2 grid of panels into it.

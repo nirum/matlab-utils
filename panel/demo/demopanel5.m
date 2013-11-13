@@ -9,11 +9,11 @@
 %% (a)
 
 % create panel
-p = panel('defer');
+p = panel();
 
 % layout a variety of sub-panels
-p.pack('h', [1/3 -1])
-p(1).pack([2/3 -1]);
+p.pack('h', {1/3 []})
+p(1).pack({2/3 []});
 p(1,1).pack(3, 2);
 p(2).pack(6, 2);
 
@@ -23,7 +23,7 @@ p(1,1).marginbottom = 20;
 p(2).marginleft = 20;
 p.margin = [13 10 2 2];
 
-% and some properties
+% set some font properties
 p.fontsize = 8;
 
 
@@ -39,10 +39,6 @@ p.fontsize = 8;
 % plotting any data, this time, so we'll use select('all')
 % to commit all remaining uncommitted panels as axis panels.
 p.select('all');
-
-% and because we 'defer'ed the rendering of this complex
-% layout, we have to refresh() to let rendering happen.
-p.refresh();
 
 % display() the panel object at the prompt
 %

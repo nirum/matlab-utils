@@ -13,7 +13,7 @@
 % create a column-pair layout, with 95% of the space given
 % to the left hand panel
 p = panel();
-p.pack('h', [95 -1]);
+p.pack('h', {95 []});
 
 % and put an axis in the left panel
 h_axis = p(1).select();

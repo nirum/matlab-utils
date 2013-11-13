@@ -12,8 +12,13 @@
 % none is open).
 %
 % you can pass the figure handle to the constructor if you
-% need to attach the panel to a particular figure, as p =
-% panel(h_figure).
+% need to attach the panel to a particular figure, as:
+%
+%   p = panel(h_figure)
+%
+% NB: you can use this code to compare using panel() with
+% using subplot(). you should find they do much the same
+% thing in this case, but with a slightly different layout.
 
 N = 2;
 use_panel = 1;

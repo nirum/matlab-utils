@@ -7,7 +7,6 @@
 %
 % (a) It's easy to create a complex layout
 % (b) You can populate it as you would a subplot layout
-% (c) You can export it to a "camera-ready" image file
 %
 % Now, move on to demopanel2 to learn how to use panel.
 
@@ -20,11 +19,11 @@ figure(1)
 clf
 
 % create panel
-p = panel('defer');
+p = panel();
 
 % layout a variety of sub-panels
-p.pack('h', [1/3 -1])
-p(1).pack([2/3 -1]);
+p.pack('h', {1/3 []})
+p(1).pack({2/3 []});
 p(1,1).pack(3, 2);
 p(2).pack(6, 2);
 
@@ -84,7 +83,7 @@ for m = 1:6
 		
 		% select axis - these two lines do the same thing (see
 		% above)
-% 		p(2,m,n).select();
+% 		p(2, m, n).select();
 		q(m, n).select();
 
 		% prepare sample data
@@ -127,14 +126,5 @@ plot([0 1], [0 1], 'r-')
 % finalise axis
 xlabel('our predictions');
 ylabel('actual measurements')
-
-
-
-%% (c)
-
-% because we 'defer'red, we have to refresh.
-p.refresh();
-
-
 
 

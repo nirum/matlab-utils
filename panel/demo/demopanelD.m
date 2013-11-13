@@ -1,5 +1,5 @@
 
-% Panel interacts with other graphics objects apart from figures and axes.
+% Panel can be child or parent to any graphics object.
 %
 % (a) Create a figure a uipanel.
 % (b) Attach a panel to it.
@@ -48,7 +48,8 @@ p.select('data')
 % hook in to the resize event of u2. a demo callback
 % function is used here, but of course you can supply any
 % function handle.
-p(2, 2).setCallback(@demopanel_callback);
+someUserData = struct('whether_a_donkey_is_a_marine_mammal', false);
+p(2, 2).addCallback(@demopanel_callback, someUserData);
 
 
 

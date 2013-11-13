@@ -9,6 +9,7 @@
 %% (a)
 
 % create a 2x2 grid in gcf.
+clf
 p = panel();
 p.pack(2, 2);
 

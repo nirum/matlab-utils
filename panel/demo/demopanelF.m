@@ -16,6 +16,7 @@
 
 % create
 figure(1)
+clf
 p = panel();
 p.pack(2, 2);
 hh = p.select('all');
@@ -34,6 +35,7 @@ p.fontname = 'Arial';
 
 % create
 figure(2)
+clf
 p = panel('no-manage-font');
 p.pack(2, 2);
 hh = p.select('all');
