@@ -19,4 +19,4 @@ setenv('PATH', [getenv('PATH') ':/usr/local/bin:/usr/texbin']);
 setPathMatlabUtils;
 
 % change directory
-cd '~/research/'; ccl;
+ccl;
