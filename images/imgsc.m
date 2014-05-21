@@ -10,3 +10,5 @@ function h = imgsc(img, scale)
     axis image;
     colorbar;
     set(gca,'XTick',[],'YTick',[]);
+    cmap = cbrewer('div', 'RdBu', 255);
+    colormap(cmap);
