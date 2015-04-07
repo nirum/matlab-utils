@@ -5,4 +5,4 @@
 
 function addtoolbox(toolbox)
 
-    addpath(['~/code/toolbox/' toolbox '/']);
+    addpath(['~/code/toolbox/matlab-utils/' toolbox '/']);
