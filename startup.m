@@ -2,14 +2,11 @@
 defaultfigureproperties;
 
 % email preferences
-setpref('Internet','E_mail','contact@niru.org');
+setpref('Internet','E_mail','nirum@stanford.edu');
 setpref('Internet','SMTP_Server','mail');
 
 % turn beep off
 beep off;
-
-% load shortcuts
-load shortcuts;
 
 % number format
 format short g
