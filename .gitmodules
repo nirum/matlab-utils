@@ -1,3 +1,0 @@
-[submodule "redis"]
-	path = redis
-	url = git@github.com:djoshea/redis-matlab.git
