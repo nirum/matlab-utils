@@ -1,6 +1,3 @@
-% default figure properties
-defaultfigureproperties;
-
 % email preferences
 setpref('Internet','E_mail','nirum@stanford.edu');
 setpref('Internet','SMTP_Server','mail');
@@ -12,8 +9,7 @@ beep off;
 format short g
 
 % Add additional directories to the path
-setenv('PATH', [getenv('PATH') ':/usr/local/bin:/usr/texbin']);
 setPathMatlabUtils;
 
-% change directory
-cd ~; ccl;
+% default figure properties
+defaultfigureproperties;
